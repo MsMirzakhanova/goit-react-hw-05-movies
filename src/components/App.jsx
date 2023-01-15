@@ -1,6 +1,7 @@
 import { Layout } from "./Layout/Layout";
 import { Home } from "./pages/Home"
-import {Movies} from "./pages/Movies"
+import { Movies } from "./pages/Movies"
+import MovieDetails from "./pages/MovieDetails"
 
 import { Routes, Route } from "react-router-dom";
 export const App = () => {

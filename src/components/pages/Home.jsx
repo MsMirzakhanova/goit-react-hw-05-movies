@@ -8,7 +8,7 @@ export const Home = () => {
     const [trendingMovies, setTrendingMovies] = useState([]);
 
     useEffect(() => {
-    getTrendingMovies().then(setTrendingMovies);
+        getTrendingMovies().then(setTrendingMovies);
     }, []);
   
     return (
@@ -16,7 +16,8 @@ export const Home = () => {
             <ul>
                 <h2>Trending today</h2>
                 {trendingMovies.map((trendingMovie) => (
-                    <li key={trendingMovie.id}><Link to="movies">{trendingMovie.title || trendingMovie.name}</Link>
+                    <li key={trendingMovie.id}>
+                        <Link to={`/movies/${trendingMovie.id}`}>{trendingMovie.title || trendingMovie.name}</Link>
                     </li>
             ))}
         </ul>
