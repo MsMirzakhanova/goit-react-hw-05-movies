@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getMovieDetails } from "../../API";
+import { useState, useEffect, Suspense } from "react";
+import { useParams, useNavigate, Link, Outlet } from "react-router-dom";
+import { getMovieDetails } from "../components/Api/API";
 
 
  const MovieDetails = () => {
@@ -21,7 +21,7 @@ import { getMovieDetails } from "../../API";
       })
       .catch(error => console.log(error));
   }, [movieId]);
-     console.log(movieDetails);
+
 
   if (!movieDetails) {
     return;
@@ -52,8 +52,17 @@ import { getMovieDetails } from "../../API";
         </div>
       </section>
       <section>
-        <p>Addination information</p>
-      </section>
+          <h3>Addination information</h3>
+          <ul>
+            <li><Link to="cast">Cast</Link></li>
+            <li><Link to="reviews">Reviews</Link></li>
+          </ul>
+        </section>
+        <Suspense fallback={<div>Loading...</div>}>
+        <section>
+          <Outlet/>
+        </section>
+      </Suspense>
     </>
   );
 };
